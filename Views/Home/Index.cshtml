@@ -1,0 +1,36 @@
+﻿@model DigitalKanBan.Models.Tarefa
+
+
+@{
+    ViewData["Title"] = "Inserir";
+}
+
+<form asp-controller="Home" asp-action="Salvar" method="POST">
+    <div class="text-center">
+        <h1>O que voce precisa fazer?</h1>
+        <input type="hidden" asp-for="Id"> 
+        <input type="text" asp-for="Descricao" placeholder="Escreva..." required>
+        <button class="btn btn-success">+Adicionar tarefa</button>
+        <hr>
+    </div>
+</form>
+<div class="jumbotron">
+    <div class="col-sm-8 mx-auto">
+        <h1>Metodo Kanban</h1>
+        <p>
+            O método Kanban é um sistema utiliza cartões de cores diferentes ou tamanhos 
+            diferentes para designar e especificar tarefas. Dessa forma, se aprimora a administração 
+            a partir de cartões de sinalização para controle de fluxos. Assim, se sabe quais tarefas 
+            precisam ser feitas, estão sendo feitas e as que foram concluídas. Ele normalmente é utilizado 
+            em empresas de produção para indicar o funcionamento dos fluxos de produção. 
+        </p>
+        <p>
+            <a href="/Home/Listar" class="btn btn-primary">Ver tarefas...</a>
+        </p>
+    </div>
+</div>
+
+
+
+
+

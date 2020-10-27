@@ -1,0 +1,66 @@
+﻿@model IEnumerable<DigitalKanBan.Models.Tarefa>
+
+@{
+    ViewData["Title"] = "Tarefas";
+}
+<h1 class="teXt-center">Quadro Kanban</h1>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 p-4 bg-danger rounded border border-white">
+            <h1 class="display-4">Por fazer</h1>
+            @foreach (var tarefa in Model)
+            {
+                @if (tarefa.Status == 0)
+                { 
+                    <div class="jumbotron">
+                        <p>@tarefa.Descricao</p>
+                        <p >
+                            <a href="/Home/AlterarStatusTarefa/@tarefa.Id" class="btn btn-success">Começar ></a>
+                            <a href="/Home/Editar/@tarefa.Id" class="btn btn-success">Editar</a>
+                            <a href="/Home/Deletar/@tarefa.Id" class="btn btn-danger">X</a>
+                        </p>
+                    </div>
+                } 
+            } 
+
+        </div>
+        <div class="col-md-4 p-4 bg-warning rounded border border-white">
+            <h1 class="display-4">Fazendo</h1>
+            
+            @foreach (var tarefa in Model)
+            {
+                @if (tarefa.Status == 1)
+                {
+                    <div class="jumbotron">
+                        <p>@tarefa.Descricao</p>
+                        <p>
+                            <a href="/Home/AlterarStatusTarefa/@tarefa.Id" class="btn btn-success">Concluir ></a>
+                            <a href="/Home/Editar/@tarefa.Id" class="btn btn-success">Editar</a>
+                            <a href="/Home/Deletar/@tarefa.Id" class="btn btn-danger">X</a>
+                        </p> 
+                    </div>
+                }
+                
+            }
+            
+        </div>
+        <div class="col-md-4 p-4 bg-success rounded border border-white">
+            <h1 class="display-4">Pronto</h1>
+            
+            @foreach (var tarefa in Model)
+            {
+                @if (tarefa.Status == 2)
+                {
+                    <div class="jumbotron">
+                        <p>@tarefa.Descricao</p> 
+                        <p>
+                            <a href="/Home/Editar/@tarefa.Id" class="btn btn-success">Editar</a>
+                            <a href="/Home/Deletar/@tarefa.Id" class="btn btn-danger">X</a>
+                        </p>
+                    </div>
+                }
+            } 
+        </div>
+    </div>
+</div>
